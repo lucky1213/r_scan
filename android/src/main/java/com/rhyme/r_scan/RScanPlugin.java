@@ -11,7 +11,6 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.BinaryMessenger;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.plugin.platform.PlatformViewRegistry;
 import io.flutter.view.TextureRegistry;
 
@@ -51,17 +50,6 @@ import io.flutter.view.TextureRegistry;
 public class RScanPlugin implements FlutterPlugin, ActivityAware {
     private MethodCallHandlerImpl methodCallHandler;
     private FlutterPluginBinding flutterPluginBinding;
-
-
-    public static void registerWith(Registrar registrar) {
-        RScanPlugin plugin = new RScanPlugin();
-        plugin.maybeStartListening(
-                registrar.activity(),
-                registrar.messenger(),
-                registrar::addRequestPermissionsResultListener,
-                registrar.view(), registrar.platformViewRegistry());
-
-    }
 
     private void maybeStartListening(
             Activity activity,
